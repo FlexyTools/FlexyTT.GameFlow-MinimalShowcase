@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2783757913122837741
+--- !u!1 &4999581529758235593
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2783757913122837740}
-  - component: {fileID: 9177113893495440294}
-  m_Layer: 5
-  m_Name: GameMode_FindExit
+  - component: {fileID: 4347312692029399178}
+  - component: {fileID: 7666602940513225207}
+  m_Layer: 0
+  m_Name: MapContext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2783757913122837740
+--- !u!4 &4347312692029399178
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2783757913122837741}
+  m_GameObject: {fileID: 4999581529758235593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,30 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9177113893495440294
+--- !u!114 &7666602940513225207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2783757913122837741}
+  m_GameObject: {fileID: 4999581529758235593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa05fa7cd6740b24ba9dcbc7a9a91822, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f1e906272594204ae3e5797c6e37b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputBlocker: {fileID: 0}
-  _cellContainer: {fileID: 0}
-  _gridSize: 3
-  _win:
-    _action:
-      rid: 3444707728992763965
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 3444707728992763965
-      type: {class: PlaySfxAction, ns: FlexyTemplates.BarleyBreak.Common, asm: Barley-Break}
-      data:
-        _clip: {fileID: 8300000, guid: 8b0c710ae3b993249b34e94e8ed0c72c, type: 3}
+  _services: {fileID: 0}
+  LinkTo: 0
+  _gameMode: {fileID: 0}

@@ -1,7 +1,7 @@
 // ReSharper disable AccessToStaticMemberViaDerivedType
 
 using FlexyTT.GameFlow_MinimalShowcase.Common;
-using FlexyTT.GameFlow_MinimalShowcase.Coregame.Kit;
+using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
 using FlexyTT.GameFlow_MinimalShowcase.Metagame;
 using FlexyTT.GameFlow_MinimalShowcase.Metagame.Leaderboards;
 

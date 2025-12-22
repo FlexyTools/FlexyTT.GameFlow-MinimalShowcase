@@ -1,5 +1,4 @@
-﻿using FlexyTT.GameFlow_MinimalShowcase.Common;
-using FlexyTT.GameFlow_MinimalShowcase.Coregame.Kit;
+﻿using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
 using UnityEngine.SceneManagement;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
@@ -12,9 +11,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		[Bindable] Int32	LoadingProgress		=> (Int32)(LoadingProgress01 * 100);
         [Bindable] Single	LoadingProgress01	{ get; set; } 
         
-		private Single			_resultScore;
-		private Boolean			_isLeaving;
-		private GameMode_FindExit?		_gameMode;
+		private Single				_resultScore;
+		private Boolean				_isLeaving;
+		private GameMode_FindExit?	_gameMode;
 
 		public	Single				GetResult			( FlowNode node ) => _resultScore;
 		public	void				Exit				( )		
@@ -107,6 +106,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			GameStage.MoveToLoadedScene( loadedScene );
 			
 			_gameMode = loadedScene.GetService<GameMode_FindExit>();
+			_gameMode.StartPlay();
 			
 			GameStage.OpenMainSubState();
 			Game.RecacheCtx();

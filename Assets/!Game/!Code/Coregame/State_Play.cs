@@ -1,4 +1,5 @@
-using FlexyTT.GameFlow_MinimalShowcase.Coregame.Kit;
+using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
+using FlexyTT.GameFlow_MinimalShowcase.Coregame.Play;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 {
@@ -32,7 +33,28 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		private		void	Update				( )						
 		{
 			RebindAll();
+			
+			if (_gameMode.PlayerMob is {} mob)
+				ControlMob(mob);
 		}
+
+		private void ControlMob(Mob_Player mob)
+		{
+			if (Keyboard.current.wKey.isPressed) mob.MoveForward();
+			if (Keyboard.current.sKey.isPressed) mob.MoveBackward();
+			
+			if (Keyboard.current.sKey.isPressed)
+			{
+				if (Keyboard.current.aKey.isPressed) mob.RotateRight();
+				if (Keyboard.current.dKey.isPressed) mob.RotateLeft();
+			}
+			else
+			{
+				if (Keyboard.current.aKey.isPressed) mob.RotateLeft();
+				if (Keyboard.current.dKey.isPressed) mob.RotateRight();
+			}
+		}
+
 		private		void	OnApplicationPause	( Boolean pauseStatus )	
 		{
 			if (!Application.isEditor)
