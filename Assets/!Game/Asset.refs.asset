@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ab316f2041483ab2054ce15b8176de, type: 3}
+  m_Name: Asset.refs
+  m_EditorClassIdentifier: 
+  DisablePipeline: 0
+  EnabledTasks:
+  - Enabled: 1
+    Task:
+      rid: 3009909224690941952
+  - Enabled: 1
+    Task:
+      rid: 3009908962306031618
+  - Enabled: 1
+    Task:
+      rid: 781959606881222656
+  - Enabled: 1
+    Task:
+      rid: 3009908962306031616
+  references:
+    version: 2
+    RefIds:
+    - rid: 781959606881222656
+      type: {class: AddRefsFromDirectory, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
+      data:
+        DirectoryOptional: {fileID: 102900000, guid: 2eab5a5de1777c641997054f42cb5bf5, type: 3}
+        TypeNamesOptional: 
+        GoToSubdirectories: 0
+    - rid: 3009908962306031616
+      type: {class: ResourcesPopulateRefs, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
+      data: 
+    - rid: 3009908962306031618
+      type: {class: AddRefsDirect, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
+      data:
+        _refs:
+        - {fileID: 102900000, guid: f04b33b7906a88b408e58e2c73f6840b, type: 3}
+        - {fileID: 11400000, guid: 11f95cb70947da346bb92451118ea417, type: 2}
+    - rid: 3009909224690941952
+      type: {class: RunOnBuildPreprocess, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
+      data: 
