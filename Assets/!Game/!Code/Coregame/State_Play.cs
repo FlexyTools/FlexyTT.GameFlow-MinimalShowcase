@@ -10,7 +10,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		[Bindable]	String	RunSeconds		=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"ss" );
 		[Bindable]	String	RunMilliseconds	=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"ff" );
 
-		private GameMode_FindExit _gameMode = null!;
+		private GameMode_Escape _gameMode = null!;
 
 		protected override void		OnShow		( )		
 		{
@@ -22,7 +22,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				return;
 			}
 		
-			_gameMode = gameObject.GetService<GameMode_FindExit>();
+			_gameMode = gameObject.GetService<GameMode_Escape>();
 		}
 		protected override Boolean	TryGoBack	( )		
 		{
@@ -36,10 +36,17 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			
 			if (_gameMode.PlayerMob is {} mob)
 				ControlMob(mob);
+				
+			if (_gameMode.IsWin)
+			{
+				GameStage.CloseSubStates(true);
+				Game.States.PlayComplete.Open(_gameMode.EscapeTime);
+			}
 		}
-
-		private void ControlMob(Mob_Player mob)
+		private		void	ControlMob			( Mob_Player mob )		
 		{
+			mob.ResetInput();
+		
 			if (Keyboard.current.wKey.isPressed) mob.MoveForward();
 			if (Keyboard.current.sKey.isPressed) mob.MoveBackward();
 			
@@ -54,7 +61,6 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				if (Keyboard.current.dKey.isPressed) mob.RotateRight();
 			}
 		}
-
 		private		void	OnApplicationPause	( Boolean pauseStatus )	
 		{
 			if (!Application.isEditor)

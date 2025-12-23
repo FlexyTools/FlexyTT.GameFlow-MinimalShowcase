@@ -1,25 +1,48 @@
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Play
 {
+	[RequireComponent(typeof(CharacterController))]
 	public class Mob_Player : Mob
 	{
-		[SerializeField]	Single	_moveSpeed = 5;
-		[SerializeField]	Single	_turnSpeed = 90;
+		[SerializeField]	Single	_moveSpeed	= 5;
+		[SerializeField]	Single	_turnSpeed	= 90;
+		[SerializeField]	Single	_smooth		= 17;
 	
-		public	void	MoveForward		( )		
+		private	Single	_moveSpeedTarget;
+		private	Single	_moveSpeedActual;
+		
+		private	Single	_turnSpeedTarget;
+		private	Single	_turnSpeedActual;
+	
+		private	CharacterController	_cc = null!;
+	
+		public	void	MoveForward		( )		=> _moveSpeedTarget = _moveSpeed;
+		public	void	MoveBackward	( )		=> _moveSpeedTarget = -_moveSpeed;
+
+		public	void	RotateLeft		( )		=> _turnSpeedTarget = -_turnSpeed;
+		public	void	RotateRight		( )		=> _turnSpeedTarget = _turnSpeed;
+
+		public	void	ResetInput		( )		
 		{
-			transform.position += transform.forward * Time.deltaTime * _moveSpeed;
+			_moveSpeedTarget = 0;
+			_turnSpeedTarget = 0;
 		}
-		public	void	MoveBackward	( )		
+
+		private void	Awake			( )		
 		{
-			transform.position += transform.forward * Time.deltaTime * -_moveSpeed;
+			_cc = GetComponent<CharacterController>();
 		}
-		public	void	RotateLeft		( )		
+		private void	Update			( )		
 		{
-			transform.Rotate(Vector3.up, -_turnSpeed * Time.deltaTime);
+			_moveSpeedActual = ExpLearp(_moveSpeedActual, _moveSpeedTarget, _smooth, Time.deltaTime);
+			_turnSpeedActual = ExpLearp(_turnSpeedActual, _turnSpeedTarget, _smooth, Time.deltaTime);
+			
+			_cc.SimpleMove(transform.forward * _moveSpeedActual);
+			transform.Rotate(Vector3.up, _turnSpeedActual * Time.deltaTime);
 		}
-		public	void	RotateRight		( )		
+		
+		private Single	ExpLearp		( Single current, Single target, Single smooth, Single dt )	
 		{
-			transform.Rotate(Vector3.up, _turnSpeed * Time.deltaTime);
+			return target + (current - target) * Mathf.Exp(-smooth * dt);
 		}
 	}
 }

@@ -3,7 +3,7 @@ using FlexyTT.GameFlow_MinimalShowcase.Coregame.Play;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 {
-	public class GameMode_FindExit : MonoBehEx
+	public class GameMode_Escape : MonoBehEx
 	{
 		[SerializeField]	AssetRef<Mob_Player>	_playerMobRef;
 	
@@ -13,7 +13,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 		public		Single		RunTime		=> Time.time - StartTime;
 		public		Boolean		IsWin		{ get; set; }
 		
-		public		Single		Result		{ get; private set; }
+		public		Single		EscapeTime		{ get; private set; }
 		public		Mob_Player?	PlayerMob	=> _playerMob;
 
 		public		void		StartPlay	( )		
@@ -29,15 +29,15 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 
 		private		void		Update		( )		
 		{
-			#if UNITY_EDITOR
-			if (Keyboard.current.wKey.wasPressedThisFrame)
-				Win();
-			#endif
+			// #if UNITY_EDITOR
+			// if (Keyboard.current.wKey.wasPressedThisFrame)
+			// 	Win();
+			// #endif
 		}
 		public		void		Win			( )		
 		{
 			IsWin = true;
-			Result = RunTime;
+			EscapeTime = RunTime;
 		} 
 		
 		[Callable]	void		Escape		( )		

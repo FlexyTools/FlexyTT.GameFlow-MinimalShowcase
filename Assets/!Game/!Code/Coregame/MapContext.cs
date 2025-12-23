@@ -4,10 +4,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 {
 	public class	MapContext : GameContext
 	{
-		[SerializeField]	GameMode_FindExit	_gameMode			= null!;
+		[SerializeField]	GameMode_Escape	_gameMode			= null!;
 		[SerializeField]	Transform			_spawnPointsRoot	= null!;
 
-		public	GameMode_FindExit	GameMode			=> _gameMode;
+		public	GameMode_Escape	GameMode			=> _gameMode;
 		public	Transform			SpawnPointsRoot		=> _spawnPointsRoot;
 
 		public	Transform			GetRandomSpawnPoint	( )		

@@ -13,7 +13,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
         
 		private Single				_resultScore;
 		private Boolean				_isLeaving;
-		private GameMode_FindExit?	_gameMode;
+		private GameMode_Escape?	_gameMode;
 
 		public	Single				GetResult			( FlowNode node ) => _resultScore;
 		public	void				Exit				( )		
@@ -46,7 +46,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			_resultScore = default;
 		
 			if (!_isLeaving && _gameMode != null)
-				_resultScore = _gameMode.Result;
+				_resultScore = _gameMode.EscapeTime;
 			
 			UnloadMap().Forget();
 		}
@@ -67,7 +67,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			{
 				await UniTask.Delay( 1000, DelayType.UnscaledDeltaTime );
 				CloseSubStates(true);
-				Game.States.PlayComplete.Open( _gameMode.Result );
+				Game.States.PlayComplete.Open( _gameMode.EscapeTime );
 			}
 		}
 		
@@ -105,7 +105,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			await UniTask.Delay( 350, ignoreTimeScale:true );
 			GameStage.MoveToLoadedScene( loadedScene );
 			
-			_gameMode = loadedScene.GetService<GameMode_FindExit>();
+			_gameMode = loadedScene.GetService<GameMode_Escape>();
 			_gameMode.StartPlay();
 			
 			GameStage.OpenMainSubState();

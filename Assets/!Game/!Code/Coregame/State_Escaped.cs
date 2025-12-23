@@ -1,8 +1,6 @@
-using FlexyTT.GameFlow_MinimalShowcase.Common;
-
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 {
-	public class State_PlayComplete : StateEx
+	public class State_Escaped : StateEx
     {
         [Bindable]		Single		Seconds				=> (Single)OpenParams!;
         [Bindable]		String		FormattedSeconds	=> Seconds >= 60 ? TimeSpan.FromSeconds( Seconds ).ToString( @"mm\:ss\.ff" ) : TimeSpan.FromSeconds( Seconds ).ToString( @"ss\.ff" );

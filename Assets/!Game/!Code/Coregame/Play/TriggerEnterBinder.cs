@@ -6,7 +6,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Play
 
 		private void OnTriggerEnter(Collider other)
 		{
-			Do();
+			if (other.TryGetComponent<Mob_Player>(out var pl))
+			{
+				Do();
+			}
 		}
 
 		private		void	Do			( )	
