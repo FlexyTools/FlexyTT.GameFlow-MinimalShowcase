@@ -21,6 +21,12 @@ MonoBehaviour:
         serializedVersion: 2
         Hash: c1055f23b34e09a4496fc2c881bb0920
       _subId: 0
+  - TypeFullName: FlexyTT.GameFlow_MinimalShowcase.Coregame.State_Escaped
+    Ref:
+      _uid:
+        serializedVersion: 2
+        Hash: f3499ec521edf35408d5415b0e98a3b3
+      _subId: 0
   - TypeFullName: FlexyTT.GameFlow_MinimalShowcase.Coregame.State_Pause
     Ref:
       _uid:
@@ -32,10 +38,4 @@ MonoBehaviour:
       _uid:
         serializedVersion: 2
         Hash: b3edd5d743edafc4dba2935e50c5d94e
-      _subId: 0
-  - TypeFullName: FlexyTT.GameFlow_MinimalShowcase.Coregame.State_PlayComplete
-    Ref:
-      _uid:
-        serializedVersion: 2
-        Hash: f3499ec521edf35408d5415b0e98a3b3
       _subId: 0

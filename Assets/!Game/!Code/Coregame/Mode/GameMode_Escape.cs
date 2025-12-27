@@ -11,13 +11,15 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 	
 		public		Single		StartTime	{ get; set; }
 		public		Single		RunTime		=> Time.time - StartTime;
-		public		Boolean		IsWin		{ get; set; }
+		public		Boolean		IsEscaped		{ get; set; }
 		
 		public		Single		EscapeTime		{ get; private set; }
 		public		Mob_Player?	PlayerMob	=> _playerMob;
 
 		public		void		StartPlay	( )		
 		{
+			StartTime = Time.time;
+			
 			var playerMobPrefab = _playerMobRef.LoadAssetSync()!;
 			_playerMob = playerMobPrefab.InstantiateInactive();
 			
@@ -27,22 +29,11 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 			_playerMob.gameObject.SetActive(true);
 		}
 
-		private		void		Update		( )		
+		[Callable]	
+		public		void		Escape		( )		
 		{
-			// #if UNITY_EDITOR
-			// if (Keyboard.current.wKey.wasPressedThisFrame)
-			// 	Win();
-			// #endif
-		}
-		public		void		Win			( )		
-		{
-			IsWin = true;
+			IsEscaped = true;
 			EscapeTime = RunTime;
-		} 
-		
-		[Callable]	void		Escape		( )		
-		{
-			Win();
 		}
 	}
 }

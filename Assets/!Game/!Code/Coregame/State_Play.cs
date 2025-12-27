@@ -24,10 +24,16 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		
 			_gameMode = gameObject.GetService<GameMode_Escape>();
 		}
+		protected override	void	OnHide		( )		
+		{
+			if (_gameMode.PlayerMob is {} mob)
+				mob.ResetInput();
+		}
 		protected override Boolean	TryGoBack	( )		
 		{
 			Pause();
 			return false;
+			
 		}
 
 		private		void	Update				( )						
@@ -37,8 +43,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			if (_gameMode.PlayerMob is {} mob)
 				ControlMob(mob);
 				
-			if (_gameMode.IsWin)
+			if (_gameMode.IsEscaped)
 			{
+				
 				GameStage.CloseSubStates(true);
 				Game.States.PlayComplete.Open(_gameMode.EscapeTime);
 			}

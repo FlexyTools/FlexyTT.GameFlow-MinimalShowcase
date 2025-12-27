@@ -67,6 +67,7 @@ MonoBehaviour:
       Hash: b3edd5d743edafc4dba2935e50c5d94e
     _subId: 0
   _statesContainer: {fileID: 2988081244453768724}
+  _gameModePrefab: {fileID: 9177113893495440294, guid: e648965002c923243b36cdfef8f4d9f5, type: 3}
   _loaderOverlay: {fileID: 6996253574232021879}
   references:
     version: 2
@@ -447,7 +448,9 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7051883542422818817, guid: 2378ea91d012897469787054ccd23588, type: 3}
+    - {fileID: 6348595535106290663, guid: 2378ea91d012897469787054ccd23588, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -671,7 +674,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowFrame
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7592025745656271894, guid: e0a783d52ab690f47b2acfe41d864485, type: 3}
+    - {fileID: 1833957352549598660, guid: e0a783d52ab690f47b2acfe41d864485, type: 3}
+    - {fileID: 3204673403680560704, guid: e0a783d52ab690f47b2acfe41d864485, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

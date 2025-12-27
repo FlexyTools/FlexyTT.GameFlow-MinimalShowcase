@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2783757913122837740}
   - component: {fileID: 9177113893495440294}
   m_Layer: 5
-  m_Name: GameMode_FindExit
+  m_Name: GameMode_Escape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

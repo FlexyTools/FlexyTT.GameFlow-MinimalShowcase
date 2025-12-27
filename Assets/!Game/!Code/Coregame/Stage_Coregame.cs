@@ -1,4 +1,6 @@
-﻿using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
+﻿using Flexy.Core.Extensions;
+using FlexyTT.GameFlow_MinimalShowcase.Coregame.Maps;
+using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
 using UnityEngine.SceneManagement;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
@@ -6,14 +8,17 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 	[ServiceTypes(typeof(GameStage))]
 	public class Stage_Coregame : GameStageEx, IStateWithResult<Single>
 	{
-		[SerializeField]	GameObject _loaderOverlay = null!;
+		[SerializeField]	GameMode_Escape	_gameModePrefab	= null!;
+		[SerializeField]	GameObject _loaderOverlay		= null!;
 	
 		[Bindable] Int32	LoadingProgress		=> (Int32)(LoadingProgress01 * 100);
         [Bindable] Single	LoadingProgress01	{ get; set; } 
         
+        //public	GameMode_Escape	GameMode			=> _gameMode;
+        
 		private Single				_resultScore;
 		private Boolean				_isLeaving;
-		private GameMode_Escape?	_gameMode;
+		private GameMode_Escape		_gameMode = null!;
 
 		public	Single				GetResult			( FlowNode node ) => _resultScore;
 		public	void				Exit				( )		
@@ -57,7 +62,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		
 		private			void		Update				( )		
 		{
-			if (_gameMode == null || !_gameMode.IsWin)
+			if (_gameMode == null || !_gameMode.IsEscaped)
 				return;
 			
 			enabled = false;
@@ -74,7 +79,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		private async	UniTask		LoadMap				( SceneRef? mapToLoad )		
 		{
 			_loaderOverlay.gameObject.SetActive(true);
-		
+			_gameMode = _gameModePrefab.InstantiateInactive();
+			_gameMode.gameObject.SetActive(true);
+			Context.SetService(_gameMode);
+
 			Scene loadedScene;
 			
 			if (mapToLoad == null)
@@ -113,7 +121,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			
 			_loaderOverlay.gameObject.SetActive(false);
 		}
-		private async	UniTask		UnloadMap			( )							
+		private async	UniTask		UnloadMap			( )						
 		{
 			_loaderOverlay.gameObject.SetActive(true);
 			GameStage.MoveToServiceScene();
@@ -123,6 +131,11 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			await UniTask.Delay( 350, ignoreTimeScale:true );
 			
 			CloseAndDestroy();
+		}
+
+		public void GoToMap(SceneRef mapRef, GlobalRef<EnterPoint> switchRef)	
+		{
+			Debug.Log( $"GoToMap: {mapRef} - {switchRef}" );
 		}
 	}
 }
