@@ -1,5 +1,6 @@
 using Flexy.Core.Extensions;
 using FlexyTT.GameFlow_MinimalShowcase.Coregame.Play;
+using UnityEngine.SceneManagement;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 {
@@ -7,14 +8,14 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 	{
 		[SerializeField]	AssetRef<Mob_Player>	_playerMobRef;
 	
-		private Mob_Player?	_playerMob;
+		private Mob_Player _playerMob = null!;
 	
 		public		Single		StartTime	{ get; set; }
 		public		Single		RunTime		=> Time.time - StartTime;
-		public		Boolean		IsEscaped		{ get; set; }
+		public		Boolean		IsEscaped	{ get; set; }
 		
-		public		Single		EscapeTime		{ get; private set; }
-		public		Mob_Player?	PlayerMob	=> _playerMob;
+		public		Single		EscapeTime	{ get; private set; }
+		public		Mob_Player	PlayerMob	=> _playerMob;
 
 		public		void		StartPlay	( )		
 		{
@@ -22,6 +23,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 			
 			var playerMobPrefab = _playerMobRef.LoadAssetSync()!;
 			_playerMob = playerMobPrefab.InstantiateInactive();
+			SceneManager.MoveGameObjectToScene(_playerMob.gameObject, gameObject.scene);
 			
 			var spawnPoint = this.GetService<MapContext>().GetRandomSpawnPoint();
 			_playerMob.transform.position = spawnPoint.position;

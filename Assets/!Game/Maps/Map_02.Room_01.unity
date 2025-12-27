@@ -7487,6 +7487,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
+      propertyPath: _map._uid
+      value: 64d665e6a47d2a24098aa64d52fc5497
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
       propertyPath: _point._uid
       value: 7668079b0596d04ef30a08f0983ec5ab
       objectReference: {fileID: 0}

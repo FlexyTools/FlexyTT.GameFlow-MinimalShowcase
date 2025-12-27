@@ -253,8 +253,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34872574}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.380132, y: 0.5745043, z: -0.3415651, w: 0.63935727}
-  m_LocalPosition: {x: -11.473105, y: 16.661364, z: 22.022299}
+  m_LocalRotation: {x: 0.3511587, y: 0.6329084, z: -0.3908274, w: 0.56865495}
+  m_LocalPosition: {x: -10.881375, y: 16.930067, z: 23.157738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6601,6 +6601,10 @@ PrefabInstance:
     - target: {fileID: 6257332587687417231, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
       propertyPath: m_Name
       value: Door_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
+      propertyPath: _map._uid
+      value: 4c2c27240c7bcdf4b98c19a2c8c2a6b8
       objectReference: {fileID: 0}
     - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
       propertyPath: _point._uid

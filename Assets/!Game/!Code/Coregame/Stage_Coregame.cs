@@ -9,7 +9,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 	public class Stage_Coregame : GameStageEx, IStateWithResult<Single>
 	{
 		[SerializeField]	GameMode_Escape	_gameModePrefab	= null!;
-		[SerializeField]	GameObject _loaderOverlay		= null!;
+		[SerializeField]	GameObject		_loaderOverlay	= null!;
+		[SerializeField]	CanvasGroup		_backOveraly	= null!;
 	
 		[Bindable] Int32	LoadingProgress		=> (Int32)(LoadingProgress01 * 100);
         [Bindable] Single	LoadingProgress01	{ get; set; } 
@@ -80,6 +81,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		{
 			_loaderOverlay.gameObject.SetActive(true);
 			_gameMode = _gameModePrefab.InstantiateInactive();
+			SceneManager.MoveGameObjectToScene(_gameMode.gameObject, Flow.gameObject.scene);
 			_gameMode.gameObject.SetActive(true);
 			Context.SetService(_gameMode);
 
@@ -111,7 +113,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			}
 			
 			await UniTask.Delay( 350, ignoreTimeScale:true );
-			GameStage.MoveToLoadedScene( loadedScene );
+			//GameStage.MoveToLoadedScene( loadedScene );
 			
 			_gameMode = loadedScene.GetService<GameMode_Escape>();
 			_gameMode.StartPlay();
@@ -124,7 +126,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		private async	UniTask		UnloadMap			( )						
 		{
 			_loaderOverlay.gameObject.SetActive(true);
-			GameStage.MoveToServiceScene();
+			//GameStage.MoveToServiceScene();
 			
 			await UniTask.NextFrame();
 			await SceneRef.LoadDummySceneAsync( gameObject, LoadSceneMode.Single );
@@ -133,9 +135,39 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			CloseAndDestroy();
 		}
 
-		public void GoToMap(SceneRef mapRef, GlobalRef<EnterPoint> switchRef)	
+		public async UniTask GoToMap(SceneRef mapRef, GlobalRef<EnterPoint> enterPointRef)	
 		{
-			Debug.Log( $"GoToMap: {mapRef} - {switchRef}" );
+			Debug.Log( $"GoToMap: {mapRef} - {enterPointRef}" );
+			
+			
+			_backOveraly.alpha	= 0.0f;
+			_backOveraly.gameObject.SetActive(true);
+			
+			while (_backOveraly.alpha < 1.0f)
+			{
+				_backOveraly.alpha	+= Time.deltaTime * 2;
+				await UniTask.NextFrame();
+			}
+			
+			// Load new map
+			_gameMode.PlayerMob.gameObject.SetActive(false);
+			
+			await SceneRef.LoadDummySceneAsync(gameObject, LoadSceneMode.Single);
+			var nextScene = await mapRef.LoadSceneAsync(gameObject, LoadSceneMode.Single);
+
+			var enterPoint = enterPointRef.Get(nextScene);
+			_gameMode.PlayerMob.transform.SetLocalPositionAndRotation(enterPoint.EnterTransform.position, enterPoint.EnterTransform.rotation);
+			
+			_gameMode.PlayerMob.gameObject.SetActive(true);
+			
+			while (_backOveraly.alpha > 0.0f)
+			{
+				_backOveraly.alpha	-= Time.deltaTime;
+				await UniTask.NextFrame();
+			}
+
+			_backOveraly.alpha	= 0.0f;
+			_backOveraly.gameObject.SetActive(false);			
 		}
 	}
 }
