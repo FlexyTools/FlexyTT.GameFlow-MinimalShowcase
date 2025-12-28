@@ -45,10 +45,19 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				
 			if (_gameMode.IsEscaped)
 			{
-				
 				GameStage.CloseSubStates(true);
 				Game.States.PlayComplete.Open(_gameMode.EscapeTime);
 			}
+		}
+		private		void	OnDisable			( )						
+		{
+			if (_gameMode.PlayerMob is {} mob)
+				mob.ResetInput();
+		}
+		private		void	OnApplicationPause	( Boolean pauseStatus )	
+		{
+			if (!Application.isEditor)
+				Game.States.Pause.Open();
 		}
 		private		void	ControlMob			( Mob_Player mob )		
 		{
@@ -67,11 +76,6 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				if (Keyboard.current.aKey.isPressed) mob.RotateLeft();
 				if (Keyboard.current.dKey.isPressed) mob.RotateRight();
 			}
-		}
-		private		void	OnApplicationPause	( Boolean pauseStatus )	
-		{
-			if (!Application.isEditor)
-				Game.States.Pause.Open();
 		}
 		
         [Callable]	void	Pause				( )			

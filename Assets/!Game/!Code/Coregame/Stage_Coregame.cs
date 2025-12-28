@@ -135,11 +135,11 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			CloseAndDestroy();
 		}
 
-		public async UniTask GoToMap(SceneRef mapRef, GlobalRef<EnterPoint> enterPointRef)	
+		public async UniTask GoToMapPoint( GlobalRef<EnterPoint> enterPointRef )	
 		{
-			Debug.Log( $"GoToMap: {mapRef} - {enterPointRef}" );
+			Debug.Log( $"GoToMap: {enterPointRef.ToStringNice()}" );
 			
-			
+			Node.FirstChild!.GetLastSibling().State.enabled = false;
 			_backOveraly.alpha	= 0.0f;
 			_backOveraly.gameObject.SetActive(true);
 			
@@ -153,13 +153,20 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			_gameMode.PlayerMob.gameObject.SetActive(false);
 			
 			await SceneRef.LoadDummySceneAsync(gameObject, LoadSceneMode.Single);
-			var nextScene = await mapRef.LoadSceneAsync(gameObject, LoadSceneMode.Single);
-
-			var enterPoint = enterPointRef.Get(nextScene);
-			_gameMode.PlayerMob.transform.SetLocalPositionAndRotation(enterPoint.EnterTransform.position, enterPoint.EnterTransform.rotation);
+			var nextScene	= await enterPointRef.Scene.LoadSceneAsync(gameObject, LoadSceneMode.Single);
+			var enterPoint	= enterPointRef.Get(nextScene);
 			
+			_gameMode.PlayerMob.transform.SetLocalPositionAndRotation(enterPoint.EnterTransform.position, enterPoint.EnterTransform.rotation);
 			_gameMode.PlayerMob.gameObject.SetActive(true);
 			
+			while (_backOveraly.alpha > 0.5f)
+			{
+				_backOveraly.alpha	-= Time.deltaTime;
+				await UniTask.NextFrame();
+			}
+
+			Node.FirstChild!.GetLastSibling().State.enabled = true;
+
 			while (_backOveraly.alpha > 0.0f)
 			{
 				_backOveraly.alpha	-= Time.deltaTime;
@@ -167,7 +174,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			}
 
 			_backOveraly.alpha	= 0.0f;
-			_backOveraly.gameObject.SetActive(false);			
+			_backOveraly.gameObject.SetActive(false);
 		}
 	}
 }
