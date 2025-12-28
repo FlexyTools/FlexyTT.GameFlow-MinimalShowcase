@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6414513464624900325}
+  - component: {fileID: 2777122265096517475}
   - component: {fileID: 6769422148625834127}
   - component: {fileID: 7887670234553470743}
   m_Layer: 3
-  m_Name: Trigger_Exit
+  m_Name: Trigger_Escape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +36,18 @@ Transform:
   - {fileID: 1417146860681715880}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2777122265096517475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476057244507384771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9208c74b2734d49bc8fdba07ee7689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6769422148625834127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988779de5357430d8657e09bc4568852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _target: {fileID: 2777122265096517475}
   _methodName: Escape
   _context: 
 --- !u!65 &7887670234553470743

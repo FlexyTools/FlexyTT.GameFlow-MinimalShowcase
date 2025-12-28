@@ -7399,12 +7399,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6769422148625834127, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6769422148625834127, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
       propertyPath: _methodName
-      value: Go
+      value: Escape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
