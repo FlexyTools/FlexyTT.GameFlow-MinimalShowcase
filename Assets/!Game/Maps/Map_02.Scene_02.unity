@@ -227,7 +227,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 100
-  field of view: 35
+  field of view: 25
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -253,13 +253,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34872574}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3511587, y: 0.6329084, z: -0.3908274, w: 0.56865495}
-  m_LocalPosition: {x: -10.881375, y: 16.930067, z: 23.157738}
+  m_LocalRotation: {x: 0.37152255, y: 0.6016403, z: -0.37152255, w: 0.6016403}
+  m_LocalPosition: {x: -14.5, y: 25, z: 23.157738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 63.392, y: 90, z: 0}
 --- !u!114 &34872579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6080,6 +6080,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_03
       objectReference: {fileID: 0}
+    - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
+      propertyPath: _point._uid
+      value: 1233452
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
+      propertyPath: _point._scene
+      value: 5a4976d28c37b2c45a8e1f58b40b1f4e
+      objectReference: {fileID: 0}
     - target: {fileID: 7861506267087667798, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
       propertyPath: _uid
       value: 4288
@@ -6612,7 +6620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
       propertyPath: _point._uid
-      value: 0
+      value: 4620825160269354260
       objectReference: {fileID: 0}
     - target: {fileID: 7619160558185296416, guid: b81b5eb8e569a9b4e95e06564482778a, type: 3}
       propertyPath: _point._scene
