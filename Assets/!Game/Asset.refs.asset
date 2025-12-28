@@ -22,22 +22,21 @@ MonoBehaviour:
       rid: 3009908962306031618
   - Enabled: 1
     Task:
-      rid: 781959606881222656
+      rid: 781960131096608770
   - Enabled: 1
     Task:
       rid: 3009908962306031616
   references:
     version: 2
     RefIds:
-    - rid: 781959606881222656
-      type: {class: AddRefsFromDirectory, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
+    - rid: 781960131096608770
+      type: {class: RunPipeline, ns: Flexy.AssetRefs.Pipelines, asm: Flexy.AssetRefs}
       data:
-        DirectoryOptional: {fileID: 102900000, guid: 2eab5a5de1777c641997054f42cb5bf5, type: 3}
-        TypeNamesOptional: 
-        GoToSubdirectories: 0
+        _pipeline: {fileID: 11400000, guid: 224377c999d2ab945aaf5028cd0ee037, type: 2}
     - rid: 3009908962306031616
       type: {class: ResourcesPopulateRefs, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
-      data: 
+      data:
+        AddScenesToBuildSettings: 0
     - rid: 3009908962306031618
       type: {class: AddRefsDirect, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
       data:
