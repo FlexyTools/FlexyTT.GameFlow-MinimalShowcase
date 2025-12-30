@@ -12,7 +12,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 		{
 			var score = await Graph.Open( _coreGameStage, map ).WaitResult<Single>();
 				
-			if (map == default && score == default) // If data is empty then field is not completed
+			if (map == default && score == default) // If data is empty then map is not completed
 				return;
 		
 			Game.Leaderboards.AddRecord( 1, score );

@@ -2,8 +2,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Maps
 {
 	public class EnterPoint : MonoBehEx
 	{
-		[SerializeField]	Transform _enterTransform = null!;
+		[SerializeField]	Transform _enterPoint = null!;
 
-		public Transform EnterTransform => _enterTransform;
+		public Transform Point => _enterPoint;
 	}
 }

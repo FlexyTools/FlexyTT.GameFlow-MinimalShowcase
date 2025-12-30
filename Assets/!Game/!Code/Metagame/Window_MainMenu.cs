@@ -2,15 +2,13 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 {
 	public class Window_MainMenu : UIWindowEx
 	{
-		[SerializeField]	SceneRef	_map_01;
-		[SerializeField]	SceneRef	_map_02;
-		[SerializeField]	SceneRef	_map_03;
+		[SerializeField]	SceneRef	_map_Arena;
+		[SerializeField]	SceneRef	_map_RoomBased;
 	
 		protected override	Boolean	TryGoBack	( )		=> false;
 
-		[Callable]	void	Play_Map_01			( )		=> Game.Flow.PlayMap( _map_01 );
-		[Callable]	void	Play_Map_02			( )		=> Game.Flow.PlayMap( _map_02 );
-		[Callable]	void	Play_Map_03			( )		=> Game.Flow.PlayMap( _map_03 );
+		[Callable]	void	Play_Arena			( )		=> Game.Flow.PlayMap( _map_Arena );
+		[Callable]	void	Play_RoomBased		( )		=> Game.Flow.PlayMap( _map_RoomBased );
 
 		[Callable]	void	OpenSettings		( )		
 		{

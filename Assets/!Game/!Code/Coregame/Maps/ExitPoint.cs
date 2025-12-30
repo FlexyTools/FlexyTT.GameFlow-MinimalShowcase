@@ -4,9 +4,6 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Maps
 	{
 		[SerializeField]	GlobalRef<EnterPoint>	_point;
 	
-		[Callable]	void	Go	( )
-		{
-			this.GetService<Stage_Coregame>().GoToMapPoint(_point);
-		}
+		[Callable]	void	Exit	( ) => this.GetService<Service_SimpleScene>().GoToMapAtPoint(_point).Forget();
 	}
 }

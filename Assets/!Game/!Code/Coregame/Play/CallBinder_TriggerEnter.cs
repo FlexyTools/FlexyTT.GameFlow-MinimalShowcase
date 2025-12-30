@@ -1,6 +1,6 @@
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Play
 {
-	public class TriggerEnterBinder : CallBinder
+	public class CallBinder_TriggerEnter : CallBinder
 	{
 		private		Action?	_action;
 

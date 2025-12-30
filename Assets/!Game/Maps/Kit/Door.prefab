@@ -82,9 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0366c2d59d614479586768764d25ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uid:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+  _uid: 5674605949798579188
 --- !u!114 &9009042086027458511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6741854b08bb43b4961ba27da7c15759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enterTransform: {fileID: 8904522982742972492}
+  _enterPoint: {fileID: 8904522982742972492}
 --- !u!114 &7619160558185296416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,14 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a7691ef83b4eb9b2fb5981f81b7b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _map:
-    _uid:
+  _point:
+    _scene:
       serializedVersion: 2
       Hash: 00000000000000000000000000000000
-  _point:
-    _uid:
-      serializedVersion: 2
-      Hash: 5f3678290d526046fe0a83201e1b0207
+    _uid: 0
 --- !u!114 &8008367056986744663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 7619160558185296416}
-  _methodName: Go
+  _methodName: Exit
   _context: 
 --- !u!33 &3058512050982868397
 MeshFilter:

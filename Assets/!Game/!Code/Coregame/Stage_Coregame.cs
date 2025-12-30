@@ -39,13 +39,13 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				return;
 			}
 			
-			LoadMap( OpenParams as SceneRef? ).Forget();
+			LoadStage( OpenParams as SceneRef? ).Forget();
 		}
 		protected override	void	OnLastChildHide		( )		
 		{
 			if (OpenParams is (Boolean replay, SceneRef map))
 			{
-				LoadMap( map ).Forget();
+				LoadStage( map ).Forget();
 				return;
 			}
 		
@@ -54,7 +54,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			if (!_isLeaving && _gameMode != null)
 				_resultScore = _gameMode.EscapeTime;
 			
-			UnloadMap().Forget();
+			UnloadStage().Forget();
 		}
 		protected override	void	OnHide				( )		
 		{
@@ -77,19 +77,23 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			}
 		}
 		
-		private async	UniTask		LoadMap				( SceneRef? mapToLoad )		
+		private async	UniTask		LoadStage			( SceneRef? mapToLoad )		
 		{
 			_loaderOverlay.gameObject.SetActive(true);
-			_gameMode = _gameModePrefab.InstantiateInactive();
-			SceneManager.MoveGameObjectToScene(_gameMode.gameObject, Flow.gameObject.scene);
-			_gameMode.gameObject.SetActive(true);
-			Context.SetService(_gameMode);
+			
+			// Spawn GameMode
+			{
+				_gameMode = _gameModePrefab.InstantiateInactive();
+				SceneManager.MoveGameObjectToScene(_gameMode.gameObject, Flow.gameObject.scene);
+				_gameMode.gameObject.SetActive(true);
+				Context.SetService(_gameMode);
+			}
 
 			Scene loadedScene;
 			
 			if (mapToLoad == null)
 			{
-				//We started from coregame scene so just simulate short loading and open root state
+				//We started from Map scene so just simulate short loading and open root state
 				await UniTask.Delay( 100, ignoreTimeScale:true );
 				loadedScene			= SceneManager.GetActiveScene();
 				LoadingProgress01	= 1.0f;
@@ -123,7 +127,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			
 			_loaderOverlay.gameObject.SetActive(false);
 		}
-		private async	UniTask		UnloadMap			( )						
+		private async	UniTask		UnloadStage			( )							
 		{
 			_loaderOverlay.gameObject.SetActive(true);
 			//GameStage.MoveToServiceScene();
@@ -135,9 +139,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			CloseAndDestroy();
 		}
 
-		public async UniTask GoToMapPoint( GlobalRef<EnterPoint> enterPointRef )	
+		public async	UniTask		GoToMapAtPoint		( GlobalRef<EnterPoint> enterPointRef )	
 		{
-			Debug.Log( $"GoToMap: {enterPointRef.ToStringNice()}" );
+			Debug.LogError( $"SL GoToMap: {enterPointRef.ToStringNice()}" );
 			
 			Node.FirstChild!.GetLastSibling().State.enabled = false;
 			_backOveraly.alpha	= 0.0f;
@@ -151,12 +155,23 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			
 			// Load new map
 			_gameMode.PlayerMob.gameObject.SetActive(false);
+			var currentScene = SceneManager.GetActiveScene();
 			
-			await SceneRef.LoadDummySceneAsync(gameObject, LoadSceneMode.Single);
-			var nextScene	= await enterPointRef.Scene.LoadSceneAsync(gameObject, LoadSceneMode.Single);
+			Debug.LogError( $"SL Load Dummy" );
+			var dummy = await SceneRef.LoadDummySceneAsync(gameObject, LoadSceneMode.Additive);
+			
+			Debug.LogError( $"SL Unload current scene {currentScene.name}" );
+			await SceneManager.UnloadSceneAsync(currentScene);
+			
+			Debug.LogError( $"SL Load Scene: {enterPointRef.ToStringNice()}" );
+			var nextScene	= await enterPointRef.Scene.LoadSceneAsync(gameObject, LoadSceneMode.Additive);
 			var enterPoint	= enterPointRef.Get(nextScene);
 			
-			_gameMode.PlayerMob.transform.SetLocalPositionAndRotation(enterPoint.EnterTransform.position, enterPoint.EnterTransform.rotation);
+			await SceneManager.UnloadSceneAsync(dummy);
+			
+			Debug.LogError( $"SL Load Scene DONE" );
+			
+			_gameMode.PlayerMob.transform.SetLocalPositionAndRotation(enterPoint.Point.position, enterPoint.Point.rotation);
 			_gameMode.PlayerMob.gameObject.SetActive(true);
 			
 			while (_backOveraly.alpha > 0.5f)
