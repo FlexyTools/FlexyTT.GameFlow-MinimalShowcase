@@ -7,7 +7,6 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 	public class GameMode_Escape : MonoBehEx
 	{
 		[SerializeField]	AssetRef<Mob_Player>	_playerMobRef;
-		[SerializeField]	Int32					_exitsCount;
 	
 		private		Mob_Player	_playerMob		= null!;
 		private		Int32		_exitPointNumber= -1;
@@ -20,11 +19,11 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 		public		Mob_Player	PlayerMob		=> _playerMob;
 		public		Int32		ExitPointNumber	=> _exitPointNumber;
 
-		public		void		Init		( )
+		public		void		Init		( Int32 exitsCount )		
 		{
-			_exitPointNumber = Random.Range(0, _exitsCount)+1;
+			_exitPointNumber = Random.Range(0, exitsCount)+1;
 		}
-		public		void		StartPlay	( Scene firstLoadedMap )		
+		public		void		StartPlay	( Scene firstLoadedMap )	
 		{
 			StartTime		 = Time.time;
 			
@@ -36,6 +35,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode
 			_playerMob.transform.position = spawnPoint.position;
 			_playerMob.transform.rotation = spawnPoint.rotation;
 			_playerMob.gameObject.SetActive(true);
+		}
+		private		void		OnDestroy	( )							
+		{
+			Destroy(_playerMob.gameObject);
 		}
 
 		[Callable]	

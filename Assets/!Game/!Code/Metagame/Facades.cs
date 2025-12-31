@@ -24,7 +24,7 @@ public record struct	Facade_GameSettings ( Service_GameSettings Svc )
 
 public readonly record struct	Facade_Flow	( Stage_Metagame Meta )
 {
-	public	void	PlayMap	( SceneRef map )	=> Meta.Play_Map(map).Forget();
+	public	void	PlayMap	( params SceneRef[] maps )	=> Meta.Play_Map(maps).Forget();
 }
 
 public readonly record struct	Facade_UIWindows	( LibCtx LibCtx )

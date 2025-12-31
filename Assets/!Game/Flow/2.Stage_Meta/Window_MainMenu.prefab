@@ -258,9 +258,18 @@ MonoBehaviour:
       serializedVersion: 2
       Hash: 58b419187a2288945b9465254ff3a041
   _map_RoomBased:
-    _uid:
+  - _uid:
       serializedVersion: 2
       Hash: 4c2c27240c7bcdf4b98c19a2c8c2a6b8
+  - _uid:
+      serializedVersion: 2
+      Hash: 64d665e6a47d2a24098aa64d52fc5497
+  - _uid:
+      serializedVersion: 2
+      Hash: 5a4976d28c37b2c45a8e1f58b40b1f4e
+  - _uid:
+      serializedVersion: 2
+      Hash: 3addaf8e66d1f6a44858d7418a542268
   references:
     version: 2
     RefIds:

@@ -8,15 +8,17 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 		private			Facade_Game		_game; 
 		private			Facade_Game		Game		=> _game.GetCached( this );
 
-		public async	UniTaskVoid		Play_Map	( SceneRef map )	
+		public async	UniTaskVoid		Play_Map	( params SceneRef[] maps )	
 		{
-			var score = await Graph.Open( _coreGameStage, map ).WaitResult<Single>();
+			var score = await Graph.Open( _coreGameStage, maps ).WaitResult<Single>();
 				
-			if (map == default && score == default) // If data is empty then map is not completed
+			if (score == default) // If data is empty then map is not completed
 				return;
 		
-			Game.Leaderboards.AddRecord( 1, score );
-			Game.UI.Leaderboards.Open( 1 );
+			var isArena = maps.Length == 1;
+		
+			Game.Leaderboards.AddRecord( isArena, score );
+			Game.UI.Leaderboards.Open( isArena );
 		}
 	}
 }

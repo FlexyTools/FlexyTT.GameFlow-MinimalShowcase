@@ -4,6 +4,7 @@ using FlexyTT.GameFlow_MinimalShowcase.Coregame.Play;
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 {
 	// Visually this state is Coregame HUD
+	[DefaultExecutionOrder(-1)]
     public class State_Play : StateEx
     {
 		[Bindable]	String	RunMinutes		=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"mm" );

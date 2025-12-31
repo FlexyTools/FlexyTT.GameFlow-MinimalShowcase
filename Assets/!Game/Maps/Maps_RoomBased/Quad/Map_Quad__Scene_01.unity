@@ -7342,6 +7342,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7666602940513225207, guid: 400ed1c556d0ede4388b4ecb069f3f62, type: 3}
+      propertyPath: _debugExitsCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666602940513225207, guid: 400ed1c556d0ede4388b4ecb069f3f62, type: 3}
       propertyPath: _spawnPointsRoot
       value: 
       objectReference: {fileID: 276863395}

@@ -3,7 +3,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 	public class Window_MainMenu : UIWindowEx
 	{
 		[SerializeField]	SceneRef	_map_Arena;
-		[SerializeField]	SceneRef	_map_RoomBased;
+		[SerializeField]	SceneRef[]	_map_RoomBased = null!;
 	
 		protected override	Boolean	TryGoBack	( )		=> false;
 

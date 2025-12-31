@@ -14,8 +14,6 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		[Bindable] Int32	LoadingProgress		=> (Int32)(LoadingProgress01 * 100);
         [Bindable] Single	LoadingProgress01	{ get; set; } 
         
-        //public	GameMode_Escape	GameMode			=> _gameMode;
-        
 		private Single				_resultScore;
 		private Boolean				_isLeaving;
 		private GameMode_Escape		_gameMode = null!;
@@ -38,16 +36,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				return;
 			}
 			
-			LoadStage( OpenParams as SceneRef? ).Forget();
+			LoadStage( OpenParams as SceneRef[] ).Forget();
 		}
 		protected override	void	OnLastChildHide		( )		
 		{
-			if (OpenParams is (Boolean replay, SceneRef map))
-			{
-				LoadStage( map ).Forget();
-				return;
-			}
-		
 			_resultScore = default;
 		
 			if (!_isLeaving && _gameMode != null)
@@ -76,7 +68,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			}
 		}
 		
-		private async	UniTask		LoadStage			( SceneRef? mapToLoad )		
+		private async	UniTask		LoadStage			( SceneRef[]? maps )		
 		{
 			_loaderOverlay.gameObject.SetActive(true);
 			
@@ -86,23 +78,26 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				SceneManager.MoveGameObjectToScene(_gameMode.gameObject, Flow.gameObject.scene);
 				_gameMode.gameObject.SetActive(true);
 				Context.SetService(_gameMode);
-				
-				_gameMode.Init();
 			}
 
 			Scene loadedScene;
 			
-			if (mapToLoad == null)
+			if (maps == null)
 			{
-				//We started from Map scene so just simulate short loading and open root state
+				//We entered play mode from Map scene so init game mode from map DebugExitsCount and simulate short loading
+				loadedScene		= SceneManager.GetActiveScene();
+				var exitsCount	= FindAnyObjectByType<MapContext>().DebugExitsCount;
+				_gameMode.Init(exitsCount);
+				
 				await UniTask.Delay( 100, ignoreTimeScale:true );
-				loadedScene			= SceneManager.GetActiveScene();
 				LoadingProgress01	= 1.0f;
 			}
 			else
 			{
+				_gameMode.Init(maps.Length);
+			
 				LoadingProgress01	= 0.0f;
-				var sceneRef		= mapToLoad.Value;
+				var sceneRef		= maps[ Random.Range(0, maps.Length) ];
 				var loadTask		= sceneRef.LoadSceneAsync( gameObject, LoadSceneMode.Single );
 				
 				while (!loadTask.IsDone)
@@ -129,7 +124,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		private async	UniTask		UnloadStage			( )							
 		{
 			_loaderOverlay.gameObject.SetActive(true);
-			//GameStage.MoveToServiceScene();
+			
+			Destroy(_gameMode.gameObject);
 			
 			await UniTask.NextFrame();
 			await SceneRef.SceneLoader.LoadDummySceneAsync( gameObject, LoadSceneMode.Single );

@@ -7,18 +7,12 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame.Leaderboards
 			Load();
 		}
 	
-		public	BoardData	Board_01	{get; private set;} = null!;
-		public	BoardData	Board_02	{get; private set;} = null!;
-		public	BoardData	Board_03	{get; private set;} = null!;
-
-		public	void		AddRecord	( Byte map, Single score )	
+		public	BoardData	Board_Arena		{get; private set;} = null!;
+		public	BoardData	Board_RoomBased	{get; private set;} = null!;
+		
+		public	void		AddRecord	( Boolean isArena, Single score )	
 		{
-			var board = map switch
-			{
-				1 => Board_01,
-				2 => Board_02,
-				3 => Board_03,
-			};
+			var board = isArena ? Board_Arena : Board_RoomBased;
 			
 			board.Records.Add( score );
 			board.Records.Sort();
@@ -31,22 +25,19 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame.Leaderboards
 		[ContextMenu("Save")]
 		public	void		Save		( )	
 		{ 
-			PlayerPrefs.SetString( "Leaderboard_3x3", JsonUtility.ToJson( Board_01 ) );
-			PlayerPrefs.SetString( "Leaderboard_4x4", JsonUtility.ToJson( Board_02 ) );
-			PlayerPrefs.SetString( "Leaderboard_5x5", JsonUtility.ToJson( Board_03 ) );
+			PlayerPrefs.SetString( "Leaderboard_3x3", JsonUtility.ToJson( Board_Arena ) );
+			PlayerPrefs.SetString( "Leaderboard_4x4", JsonUtility.ToJson( Board_RoomBased ) );
 			
 			PlayerPrefs.Save( );
 		}
 		[ContextMenu("Load")]
 		public	void		Load		( )	
 		{
-			Board_01 = JsonUtility.FromJson<BoardData>( PlayerPrefs.GetString( "Leaderboard_3x3", "{}" ) );
-			Board_02 = JsonUtility.FromJson<BoardData>( PlayerPrefs.GetString( "Leaderboard_4x4", "{}" ) );
-			Board_03 = JsonUtility.FromJson<BoardData>( PlayerPrefs.GetString( "Leaderboard_5x5", "{}" ) );
+			Board_Arena		= JsonUtility.FromJson<BoardData>( PlayerPrefs.GetString( "Leaderboard_Arena", "{}" ) );
+			Board_RoomBased	= JsonUtility.FromJson<BoardData>( PlayerPrefs.GetString( "Leaderboard_RoomBased", "{}" ) );
 			
-			while (Board_01.Records.Count < 7) Board_01.Records.Add( Single.PositiveInfinity );
-			while (Board_02.Records.Count < 7) Board_02.Records.Add( Single.PositiveInfinity );
-			while (Board_03.Records.Count < 7) Board_03.Records.Add( Single.PositiveInfinity );
+			while (Board_Arena.Records.Count < 7)		Board_Arena		.Records.Add( Single.PositiveInfinity );
+			while (Board_RoomBased.Records.Count < 7)	Board_RoomBased	.Records.Add( Single.PositiveInfinity );
 		}
 		
 		[Serializable]
