@@ -41,14 +41,13 @@ GameObject:
   m_Component:
   - component: {fileID: 277257122479138660}
   - component: {fileID: 7861506267087667798}
-  - component: {fileID: 9009042086027458511}
   - component: {fileID: 7619160558185296416}
   - component: {fileID: 8008367056986744663}
   - component: {fileID: 3058512050982868397}
   - component: {fileID: 4582428971533870478}
   - component: {fileID: 5354886697889983822}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,20 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0366c2d59d614479586768764d25ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uid: 5674605949798579188
---- !u!114 &9009042086027458511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6257332587687417231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6741854b08bb43b4961ba27da7c15759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enterPoint: {fileID: 8904522982742972492}
+  _uid: 5548505157087760339
 --- !u!114 &7619160558185296416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +99,7 @@ MonoBehaviour:
       serializedVersion: 2
       Hash: 00000000000000000000000000000000
     _uid: 0
+  _enterPlace: {fileID: 8904522982742972492}
 --- !u!114 &8008367056986744663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 7619160558185296416}
-  _methodName: Exit
+  _methodName: GoToMapSingle_AtPoint
   _context: 
+  _colliderTag: Player
 --- !u!33 &3058512050982868397
 MeshFilter:
   m_ObjectHideFlags: 0

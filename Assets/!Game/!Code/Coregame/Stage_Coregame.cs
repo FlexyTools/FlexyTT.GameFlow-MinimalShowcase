@@ -1,5 +1,4 @@
 ﻿using Flexy.Core.Extensions;
-using FlexyTT.GameFlow_MinimalShowcase.Coregame.Maps;
 using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
 using UnityEngine.SceneManagement;
 
@@ -137,59 +136,6 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			await UniTask.Delay( 350, ignoreTimeScale:true );
 			
 			CloseAndDestroy();
-		}
-
-		public async	UniTask		GoToMapAtPoint		( GlobalRef<EnterPoint> enterPointRef )	
-		{
-			Debug.LogError( $"SL GoToMap: {enterPointRef.ToStringNice()}" );
-			
-			Node.FirstChild!.GetLastSibling().State.enabled = false;
-			_backOveraly.alpha	= 0.0f;
-			_backOveraly.gameObject.SetActive(true);
-			
-			while (_backOveraly.alpha < 1.0f)
-			{
-				_backOveraly.alpha	+= Time.deltaTime * 2;
-				await UniTask.NextFrame();
-			}
-			
-			// Load new map
-			_gameMode.PlayerMob.gameObject.SetActive(false);
-			var currentScene = SceneManager.GetActiveScene();
-			
-			Debug.LogError( $"SL Load Dummy" );
-			var dummy = await SceneRef.LoadDummySceneAsync(gameObject, LoadSceneMode.Additive);
-			
-			Debug.LogError( $"SL Unload current scene {currentScene.name}" );
-			await SceneManager.UnloadSceneAsync(currentScene);
-			
-			Debug.LogError( $"SL Load Scene: {enterPointRef.ToStringNice()}" );
-			var nextScene	= await enterPointRef.Scene.LoadSceneAsync(gameObject, LoadSceneMode.Additive);
-			var enterPoint	= enterPointRef.Get(nextScene);
-			
-			await SceneManager.UnloadSceneAsync(dummy);
-			
-			Debug.LogError( $"SL Load Scene DONE" );
-			
-			_gameMode.PlayerMob.transform.SetLocalPositionAndRotation(enterPoint.Point.position, enterPoint.Point.rotation);
-			_gameMode.PlayerMob.gameObject.SetActive(true);
-			
-			while (_backOveraly.alpha > 0.5f)
-			{
-				_backOveraly.alpha	-= Time.deltaTime;
-				await UniTask.NextFrame();
-			}
-
-			Node.FirstChild!.GetLastSibling().State.enabled = true;
-
-			while (_backOveraly.alpha > 0.0f)
-			{
-				_backOveraly.alpha	-= Time.deltaTime;
-				await UniTask.NextFrame();
-			}
-
-			_backOveraly.alpha	= 0.0f;
-			_backOveraly.gameObject.SetActive(false);
 		}
 	}
 }

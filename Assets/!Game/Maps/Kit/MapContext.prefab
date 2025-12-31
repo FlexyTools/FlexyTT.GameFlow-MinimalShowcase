@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _services: {fileID: 0}
-  LinkTo: 0
-  _gameMode: {fileID: 0}
+  LinkTo: 1
+  _spawnPointsRoot: {fileID: 0}
