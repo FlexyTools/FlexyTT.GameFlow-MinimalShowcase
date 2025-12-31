@@ -7358,9 +7358,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 2777122265096517475, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
+      propertyPath: _index
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777122265096517475, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
+      propertyPath: _pointNumber
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6414513464624900325, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.996878
+      value: 23.93
       objectReference: {fileID: 0}
     - target: {fileID: 6414513464624900325, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7368,7 +7376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6414513464624900325, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.57123
+      value: -7.97
       objectReference: {fileID: 0}
     - target: {fileID: 6414513464624900325, guid: 4626431560ec1b74ba366cfc28b08f39, type: 3}
       propertyPath: m_LocalRotation.w

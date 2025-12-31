@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9208c74b2734d49bc8fdba07ee7689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pointNumber: 0
 --- !u!114 &6769422148625834127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +64,7 @@ MonoBehaviour:
   _target: {fileID: 2777122265096517475}
   _methodName: Escape
   _context: 
+  _colliderTag: Player
 --- !u!65 &7887670234553470743
 BoxCollider:
   m_ObjectHideFlags: 0

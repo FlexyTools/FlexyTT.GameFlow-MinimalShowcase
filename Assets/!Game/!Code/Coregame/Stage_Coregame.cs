@@ -86,6 +86,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 				SceneManager.MoveGameObjectToScene(_gameMode.gameObject, Flow.gameObject.scene);
 				_gameMode.gameObject.SetActive(true);
 				Context.SetService(_gameMode);
+				
+				_gameMode.Init();
 			}
 
 			Scene loadedScene;
@@ -116,10 +118,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			}
 			
 			await UniTask.Delay( 350, ignoreTimeScale:true );
-			//GameStage.MoveToLoadedScene( loadedScene );
 			
-			_gameMode = loadedScene.GetService<GameMode_Escape>();
-			_gameMode.StartPlay();
+			_gameMode.StartPlay( loadedScene );
 			
 			GameStage.OpenMainSubState();
 			Game.RecacheCtx();
@@ -132,7 +132,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			//GameStage.MoveToServiceScene();
 			
 			await UniTask.NextFrame();
-			await SceneRef.LoadDummySceneAsync( gameObject, LoadSceneMode.Single );
+			await SceneRef.SceneLoader.LoadDummySceneAsync( gameObject, LoadSceneMode.Single );
 			await UniTask.Delay( 350, ignoreTimeScale:true );
 			
 			CloseAndDestroy();
