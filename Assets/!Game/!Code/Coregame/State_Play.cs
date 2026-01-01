@@ -1,3 +1,4 @@
+using FlexyTT.GameFlow_MinimalShowcase.Coregame.Controls;
 using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
 using FlexyTT.GameFlow_MinimalShowcase.Coregame.Play;
 
@@ -7,6 +8,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 	[DefaultExecutionOrder(-1)]
     public class State_Play : StateEx
     {
+		[SerializeField]	Stick	_stick = null!;
+    
 		[Bindable]	String	RunMinutes		=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"mm" );
 		[Bindable]	String	RunSeconds		=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"ss" );
 		[Bindable]	String	RunMilliseconds	=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"ff" );
@@ -47,7 +50,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			if (_gameMode.IsEscaped)
 			{
 				GameStage.CloseSubStates(true);
-				Game.States.PlayComplete.Open(_gameMode.EscapeTime);
+				Game.States.Escaped.Open(_gameMode.EscapeTime);
 			}
 		}
 		private		void	OnDisable			( )						
@@ -63,6 +66,12 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		private		void	ControlMob			( Mob_Player mob )		
 		{
 			mob.ResetInput();
+		
+			if (_stick.IsDown)
+			{
+				mob.MoveForward();
+				mob.Rotate(_stick.TurnValue);
+			}	
 		
 			if (Keyboard.current.wKey.isPressed) mob.MoveForward();
 			if (Keyboard.current.sKey.isPressed) mob.MoveBackward();

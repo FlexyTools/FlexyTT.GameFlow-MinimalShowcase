@@ -1,5 +1,4 @@
 using FlexyTT.GameFlow_MinimalShowcase.Metagame;
-using FlexyTT.GameFlow_MinimalShowcase.Settings;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Common.Kit
 {
@@ -9,9 +8,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Common.Kit
 		
 		private		SettingsTab_Color		_colorSettings	= null!;
 		
-		[Bindable]	Color	BorderColor		=> _colorSettings.Primary * _tintColor;
+		[Bindable]	Color	BorderColor		=> (_colorSettings ??= Game.Settings.Color).Primary * _tintColor;
 	
-		private		void	OnEnable		( ) => (_colorSettings = Game.Settings.Color).Primary.Changed += RebindColor;
+		private		void	OnEnable		( ) => (_colorSettings ??= Game.Settings.Color).Primary.Changed += RebindColor;
 		private		void	OnDisable		( ) => _colorSettings.Primary.Changed -= RebindColor;
 
 		private		void	RebindColor		( Color32 color ) => RebindProperty( "BorderColor" );

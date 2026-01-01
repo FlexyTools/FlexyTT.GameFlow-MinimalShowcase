@@ -25,8 +25,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame.Leaderboards
 		[ContextMenu("Save")]
 		public	void		Save		( )	
 		{ 
-			PlayerPrefs.SetString( "Leaderboard_3x3", JsonUtility.ToJson( Board_Arena ) );
-			PlayerPrefs.SetString( "Leaderboard_4x4", JsonUtility.ToJson( Board_RoomBased ) );
+			PlayerPrefs.SetString( "Leaderboard_Arena",		JsonUtility.ToJson( Board_Arena ) );
+			PlayerPrefs.SetString( "Leaderboard_RoomBased",	JsonUtility.ToJson( Board_RoomBased ) );
 			
 			PlayerPrefs.Save( );
 		}

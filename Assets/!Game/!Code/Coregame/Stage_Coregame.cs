@@ -7,9 +7,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 	[ServiceTypes(typeof(GameStage))]
 	public class Stage_Coregame : GameStageEx, IStateWithResult<Single>
 	{
-		[SerializeField]	GameMode_Escape	_gameModePrefab	= null!;
-		[SerializeField]	GameObject		_loaderOverlay	= null!;
-		[SerializeField]	CanvasGroup		_backOveraly	= null!;
+		[SerializeField]	AssetRef<GameMode_Escape>	_gameModeRef;
+		[SerializeField]	GameObject					_loaderOverlay	= null!;
 	
 		[Bindable] Int32	LoadingProgress		=> (Int32)(LoadingProgress01 * 100);
         [Bindable] Single	LoadingProgress01	{ get; set; } 
@@ -64,7 +63,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			{
 				await UniTask.Delay( 1000, DelayType.UnscaledDeltaTime );
 				CloseSubStates(true);
-				Game.States.PlayComplete.Open( _gameMode.EscapeTime );
+				Game.States.Escaped.Open( _gameMode.EscapeTime );
 			}
 		}
 		
@@ -74,7 +73,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			
 			// Spawn GameMode
 			{
-				_gameMode = _gameModePrefab.InstantiateInactive();
+				var gameModePrefab = _gameModeRef.LoadAssetSync()!;
+				_gameMode = gameModePrefab.InstantiateInactive();
 				SceneManager.MoveGameObjectToScene(_gameMode.gameObject, Flow.gameObject.scene);
 				_gameMode.gameObject.SetActive(true);
 				Context.SetService(_gameMode);

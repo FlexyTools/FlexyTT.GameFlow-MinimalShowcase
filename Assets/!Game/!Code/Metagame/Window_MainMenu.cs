@@ -12,25 +12,29 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 
 		[Callable]	void	OpenSettings		( )		
 		{
-			Game.UI.Settings.Open( );
+			Game.UI.Settings.Open();
 		}
+		[Callable]	void	OpenLeaderboards	( )		
+		{
+			Game.UI.Leaderboards.Open();
+		}
+		[Callable]	void	OpenAppInfo			( )		
+		{
+			Game.UI.AppInfo.Open();
+		}
+		
 		[Callable]	void	ExitGame			( )		
 		{
-			if( !Application.isEditor )
+			if (!Application.isEditor)
 			{
-				Application.Quit( );
+				Application.Quit();
 			}
 			else
 			{
 	#if UNITY_EDITOR
-				UnityEditor.EditorApplication.ExitPlaymode( );
+				UnityEditor.EditorApplication.ExitPlaymode();
 	#endif
 			}
-		}
-		
-		[Callable]	void	OpenAppInfo			( )		
-		{
-			Game.UI.AppInfo.Open( );
 		}
 	}
 }

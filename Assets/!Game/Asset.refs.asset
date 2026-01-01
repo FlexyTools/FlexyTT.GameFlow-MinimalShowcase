@@ -42,7 +42,10 @@ MonoBehaviour:
       data:
         _refs:
         - {fileID: 102900000, guid: f04b33b7906a88b408e58e2c73f6840b, type: 3}
+        - {fileID: 102900000, guid: 162ff637717a47246ba5339232c4e71b, type: 3}
         - {fileID: 11400000, guid: 11f95cb70947da346bb92451118ea417, type: 2}
+        - {fileID: 2783757913122837741, guid: e648965002c923243b36cdfef8f4d9f5, type: 3}
+        - {fileID: 1332521567249867486, guid: 2f8c357017ce9a748a9eab6f270ef714, type: 3}
     - rid: 3009909224690941952
       type: {class: RunOnBuildPreprocess, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
       data: 

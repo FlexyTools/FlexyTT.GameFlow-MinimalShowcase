@@ -12,6 +12,7 @@ public struct	Facade_Game : ICachedContext
 
 	public	Facade_Flow				Flow			=> new( Ctx.GetService<Stage_Metagame>() );
 	public	Facade_UIWindows		UI				=> new( Ctx.GetService<GameStage>() );
+	public	Service_Audio			Audio			=> Ctx.GetService<Service_Audio>();
 	public	Facade_GameSettings		Settings		=> new( Ctx.GetService<Service_GameSettings>() );
 	public	Service_Leaderboards	Leaderboards	=> Ctx.GetService<Service_Leaderboards>();
 }

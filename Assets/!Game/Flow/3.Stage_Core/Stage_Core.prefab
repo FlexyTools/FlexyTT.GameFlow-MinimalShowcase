@@ -68,7 +68,11 @@ MonoBehaviour:
       Hash: b3edd5d743edafc4dba2935e50c5d94e
     _subId: 0
   _statesContainer: {fileID: 2988081244453768724}
-  _gameModePrefab: {fileID: 9177113893495440294, guid: e648965002c923243b36cdfef8f4d9f5, type: 3}
+  _gameModeRef:
+    _uid:
+      serializedVersion: 2
+      Hash: e648965002c923243b36cdfef8f4d9f5
+    _subId: 0
   _loaderOverlay: {fileID: 6996253574232021879}
   _backOveraly: {fileID: 4705101143796276042}
   references:
@@ -203,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _backOverlay: {fileID: 4705101143796276042}
   _playerMobTag: Player
+  _defaultLoadMode: 0
 --- !u!1 &2893607652887408856
 GameObject:
   m_ObjectHideFlags: 0

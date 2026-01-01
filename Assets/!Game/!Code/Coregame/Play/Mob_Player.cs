@@ -18,8 +18,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame.Play
 		public	void	MoveForward		( )		=> _moveSpeedTarget = _moveSpeed;
 		public	void	MoveBackward	( )		=> _moveSpeedTarget = -_moveSpeed;
 
-		public	void	RotateLeft		( )		=> _turnSpeedTarget = -_turnSpeed;
-		public	void	RotateRight		( )		=> _turnSpeedTarget = _turnSpeed;
+		public	void	RotateLeft		( )		=> Rotate(-1);
+		public	void	RotateRight		( )		=> Rotate(+1);
+
+		public	void	Rotate			( Single value01 ) => _turnSpeedTarget = _turnSpeed * value01;
 
 		public	void	ResetInput		( )		
 		{
