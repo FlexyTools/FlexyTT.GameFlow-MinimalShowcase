@@ -27,7 +27,7 @@ MonoBehaviour:
       type: {class: SetUniversalVersion, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
       data:
         _versionTag: Template
-        _n: 2025
+        _n: 2026
         _timeSource: 0
         _major: 1
         _minor: 2

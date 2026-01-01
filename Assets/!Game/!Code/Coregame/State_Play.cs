@@ -1,6 +1,6 @@
-using FlexyTT.GameFlow_MinimalShowcase.Coregame.Controls;
 using FlexyTT.GameFlow_MinimalShowcase.Coregame.Mode;
 using FlexyTT.GameFlow_MinimalShowcase.Coregame.Play;
+using Button = FlexyTT.GameFlow_MinimalShowcase.Coregame.Controls.Button;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 {
@@ -8,7 +8,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 	[DefaultExecutionOrder(-1)]
     public class State_Play : StateEx
     {
-		[SerializeField]	Stick	_stick = null!;
+		[SerializeField]	Button	_forward	= null!;
+		[SerializeField]	Button	_left		= null!;
+		[SerializeField]	Button	_right		= null!;
     
 		[Bindable]	String	RunMinutes		=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"mm" );
 		[Bindable]	String	RunSeconds		=> TimeSpan.FromSeconds( _gameMode.RunTime ).ToString( @"ss" );
@@ -67,12 +69,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		{
 			mob.ResetInput();
 		
-			if (_stick.IsDown)
-			{
-				mob.MoveForward();
-				mob.Rotate(_stick.TurnValue);
-			}	
-		
+			if (_forward.IsPressed)	mob.MoveForward();
+			if (_right.IsPressed)	mob.RotateRight();
+			if (_left.IsPressed)	mob.RotateLeft();
+			
 			if (Keyboard.current.wKey.isPressed) mob.MoveForward();
 			if (Keyboard.current.sKey.isPressed) mob.MoveBackward();
 			

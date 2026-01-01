@@ -8,7 +8,7 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 1
-  defaultScreenOrientation: 0
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 0
@@ -58,10 +58,10 @@ PlayerSettings:
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
-  allowedAutorotateToPortrait: 1
+  allowedAutorotateToPortrait: 0
   allowedAutorotateToPortraitUpsideDown: 0
-  allowedAutorotateToLandscapeRight: 0
-  allowedAutorotateToLandscapeLeft: 0
+  allowedAutorotateToLandscapeRight: 1
+  allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
   use32BitDisplayBuffer: 0
   preserveFramebufferAlpha: 0
@@ -141,7 +141,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.101.41
+  bundleVersion: 0.101.80
   preloadedAssets:
   - {fileID: 0}
   - {fileID: -944628639613478452, guid: 28400d27034dfd146b7bc6d75ea4f182, type: 3}
@@ -170,12 +170,12 @@ PlayerSettings:
     Standalone: fun.flexytt.gameflow_minimalshowcase
     iPhone: fun.flexytt.gameflow_minimalshowcase
   buildNumber:
-    Standalone: 0.484.93
+    Standalone: 10180
     VisionOS: 2502200
-    iPhone: 0.484.93
-    tvOS: 0.484.93
+    iPhone: 10180
+    tvOS: 10180
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 48493
+  AndroidBundleVersionCode: 10180
   AndroidMinSdkVersion: 29
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0
