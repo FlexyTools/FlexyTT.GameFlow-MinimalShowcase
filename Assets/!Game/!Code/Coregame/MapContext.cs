@@ -9,7 +9,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 		
 
 		public	Transform	SpawnPointsRoot		=> _spawnPointsRoot;
-		public	Int32		DebugExitsCount			=> _debugExitsCount;
+		public	Int32		DebugExitsCount		=> _debugExitsCount;
 
 		public	Transform	GetRandomSpawnPoint	( )		
 		{

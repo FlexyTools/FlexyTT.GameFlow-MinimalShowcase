@@ -18,16 +18,8 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 
 		private GameMode_Escape _gameMode = null!;
 
-		protected override void		OnShow		( )		
+		protected override	void	OnShow		( )		
 		{
-			if (OpenParams is SceneRef sceneRef)
-			{
-				// We started from test scene because runtime flow dont have Params at all for this State
-				// So close to GameStage with replay request to load requested map
-				GameStage.CloseSubStates(true, (true, sceneRef));
-				return;
-			}
-		
 			_gameMode = gameObject.GetService<GameMode_Escape>();
 		}
 		protected override	void	OnHide		( )		
@@ -35,11 +27,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			if (_gameMode.PlayerMob is {} mob)
 				mob.ResetInput();
 		}
-		protected override Boolean	TryGoBack	( )		
+		protected override	Boolean	TryGoBack	( )		
 		{
 			Pause();
 			return false;
-			
 		}
 
 		private		void	Update				( )						
@@ -88,13 +79,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			}
 		}
 		
-        [Callable]	void	Pause				( )			
+        [Callable]	void	Pause				( )		
         {
 			Game.States.Pause.Open();
         }
-        
-        [StateTest]	Object	Play_3x3 	( ) => new SceneRef("1afdd18b2b9c65e4b866284337ba9044");
-        [StateTest]	Object	Play_4x4 	( ) => new SceneRef("6bfc812ba38db7b47bc55722377eb3a5");
-        [StateTest]	Object	Play_5x5 	( ) => new SceneRef("3fb4186ae0d813b44b8097bf7a82b451");
     }
 }

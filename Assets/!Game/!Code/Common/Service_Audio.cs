@@ -1,5 +1,3 @@
-using FlexyTT.GameFlow_MinimalShowcase.Settings;
-
 namespace FlexyTT.GameFlow_MinimalShowcase.Common
 {
 	public class Service_Audio : MonoBehaviour, IService
