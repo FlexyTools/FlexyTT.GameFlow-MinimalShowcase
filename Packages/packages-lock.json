@@ -289,6 +289,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "fun.flexy.assetrefs": "6.0.0",
         "fun.flexy.core": "6.0.4"
       }
     },
@@ -303,7 +304,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "fun.flexy.core": "6.0.0"
+        "fun.flexy.core": "6.0.4",
+        "fun.flexy.gameflow": "6.0.0"
       }
     },
     "com.unity.modules.ai": {
