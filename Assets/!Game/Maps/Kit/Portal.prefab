@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0366c2d59d614479586768764d25ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uid: 5548505157087760339
+  _uid: 4728891796493174253
 --- !u!114 &7619160558185296416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +141,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

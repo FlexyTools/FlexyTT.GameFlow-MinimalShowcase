@@ -18,14 +18,17 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 
 		private GameMode_Escape _gameMode = null!;
 
-		protected override	void	OnShow		( )		
+		protected override	UniTask	OnShow		( )		
 		{
 			_gameMode = gameObject.GetService<GameMode_Escape>();
+			return default;
 		}
-		protected override	void	OnHide		( )		
+		protected override	UniTask	OnHide		( )		
 		{
 			if (_gameMode.PlayerMob is {} mob)
 				mob.ResetInput();
+				
+			return default;
 		}
 		protected override	Boolean	TryGoBack	( )		
 		{

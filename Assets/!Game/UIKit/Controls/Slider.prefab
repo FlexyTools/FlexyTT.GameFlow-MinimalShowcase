@@ -108,9 +108,6 @@ MonoBehaviour:
     MemberName: 
     Params: 
   _slider: {fileID: 8885008360490591634}
-  _useTween: 0
-  _startFromZero: 0
-  _tweenTime: 0
 --- !u!1 &1739860309744003988
 GameObject:
   m_ObjectHideFlags: 0

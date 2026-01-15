@@ -33,6 +33,7 @@ MonoBehaviour:
         _minor: 2
         _buildTime: 1
         _setBuildNumber: 1
+        _buildNumberOffset: 0
     - rid: 3444707932763848767
       type: {class: ReadAppRevisionAndBranchFromGit, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
       data: 

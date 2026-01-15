@@ -10,19 +10,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 		[Callable]	void	Play_Arena			( )		=> Game.Flow.PlayMap( _map_Arena );
 		[Callable]	void	Play_RoomBased		( )		=> Game.Flow.PlayMap( _map_RoomBased );
 
-		[Callable]	void	OpenSettings		( )		
-		{
-			Game.UI.Settings.Open();
-		}
-		[Callable]	void	OpenLeaderboards	( )		
-		{
-			Game.UI.Leaderboards.Open();
-		}
-		[Callable]	void	OpenAppInfo			( )		
-		{
-			Game.UI.AppInfo.Open();
-		}
-		
+		[Callable]	void	OpenSettings		( )		=> Game.UI.Settings.Open();
+		[Callable]	void	OpenLeaderboards	( )		=> Game.UI.Leaderboards.Open();
+		[Callable]	void	OpenAppInfo			( )		=> Game.UI.AppInfo.Open();
+
 		[Callable]	void	ExitGame			( )		
 		{
 			if (!Application.isEditor)

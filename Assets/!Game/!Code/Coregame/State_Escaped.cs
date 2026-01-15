@@ -1,3 +1,5 @@
+using Flexy.UI.Extra;
+
 namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 {
 	public class State_Escaped : StateEx
@@ -7,12 +9,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 
         protected override	Boolean	TryGoBack	( )		=> false;
 
-        [Callable]			void	Continue	( )		
-		{
-			Close();			
-		}
-        
-		public new record struct Opener( OpenCtx Ctx ) : IOpener
+        [Callable]			void	Continue	( )		=> Close();
+
+        public new record struct Opener( OpenCtx Ctx ) : IOpener
 		{
 			public	FlowNode	Open	( Single seconds ) => Ctx.Open( seconds );
 		}

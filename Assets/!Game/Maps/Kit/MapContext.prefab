@@ -47,3 +47,4 @@ MonoBehaviour:
   _services: {fileID: 0}
   LinkTo: 1
   _spawnPointsRoot: {fileID: 0}
+  _debugExitsCount: 0

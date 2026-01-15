@@ -24,7 +24,7 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			CloseSubStates(true);
 		}
 		
-		protected override	void	OnShow				( )		
+		protected override	UniTask	OnShow				( )		
 		{
 			enabled = false;
 			Game.Audio.SwitchToCore();
@@ -32,10 +32,11 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			if (AnySubStateOpened) // Case of special boot from state scene
 			{
 				_loaderOverlay.SetActive(false);
-				return;
+				return default;
 			}
 			
 			LoadStage( OpenParams as SceneRef[] ).Forget();
+			return default;
 		}
 		protected override	void	OnLastChildHide		( )		
 		{
@@ -46,9 +47,10 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Coregame
 			
 			UnloadStage().Forget();
 		}
-		protected override	void	OnHide				( )		
+		protected override	UniTask	OnHide				( )		
 		{
 			Game.Audio.SwitchToMeta();
+			return default;
 		}
 		
 		private			void		Update				( )		

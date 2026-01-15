@@ -10,9 +10,9 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 		[SerializeField] AssetRef<GameStage>	_coreGameStage;
 
 		private			Facade_Game		_game; 
-		private			Facade_Game		Game		=> _game.GetCached( this );
+		private			Facade_Game		Game			=> _game.GetCached( this );
 
-		public async	UniTaskVoid		Play_Map	( params SceneRef[] maps )	
+		public async	UniTaskVoid		Play_Map		( params SceneRef[] maps )	
 		{
 			var score = await Graph.Open( _coreGameStage, maps ).WaitResult<Single>();
 				
@@ -25,30 +25,21 @@ namespace FlexyTT.GameFlow_MinimalShowcase.Metagame
 			Game.UI.Leaderboards.Open( isArena );
 		}
 		
-		protected override	void	OnShow				( )		
+		protected override	UniTask		OnShow			( )		
 		{
-			base.OnShow();
-		
-			if (!Node.FullyInited)
-			{
-				// Special case of first Show called from BackShow
-				// This happens in case of opening many states in a row so state 1 will transition to state 4
-				// than back operations will open state 3 -> 2 -> 1. foreach BackShow will be called
-				// but for 3 and 2 Show will be called before BackShow because they had never shown before  
-				// BackShow will be called next so we skip loading scene
-				return;
-			}
-			
 			Game.Audio.SwitchToMeta(); 
-			LoadStage().Forget(); 
+			LoadStage().Forget();
+			return base.OnShow(); 
 		}
-		protected override	void	OnBackShow			( )		
+		protected override	UniTask		OnBackShow		( )		
 		{
 			Game.Audio.SwitchToMeta();
 			LoadStage().Forget();
+			
+			return base.OnBackShow();
 		}
 		
-		private async	UniTask		LoadStage			( )		
+		private async		UniTask		LoadStage		( )		
 		{
 			if (SceneManager.GetActiveScene().name == SceneRef.SceneLoader.GetSceneName(_metaStageScene))
 			{
