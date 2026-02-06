@@ -1,5 +1,4 @@
 using System.Linq;
-using FlexyTT.GameFlow_MinimalShowcase.Common;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Menu.Leaderboards
 {

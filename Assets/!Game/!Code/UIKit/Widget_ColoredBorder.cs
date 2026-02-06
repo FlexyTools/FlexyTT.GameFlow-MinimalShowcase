@@ -1,6 +1,6 @@
 using FlexyTT.GameFlow_MinimalShowcase.Menu;
 
-namespace FlexyTT.GameFlow_MinimalShowcase.Common.Kit
+namespace FlexyTT.GameFlow_MinimalShowcase.UIKit
 {
 	public class Widget_ColoredBorder : UIWidgetEx
 	{

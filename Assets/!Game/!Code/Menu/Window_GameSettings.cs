@@ -1,6 +1,4 @@
-﻿using FlexyTT.GameFlow_MinimalShowcase.Settings;
-
-namespace FlexyTT.GameFlow_MinimalShowcase.Menu
+﻿namespace FlexyTT.GameFlow_MinimalShowcase.Menu
 {
 	public class Window_GameSettings : UIWindowEx
 	{

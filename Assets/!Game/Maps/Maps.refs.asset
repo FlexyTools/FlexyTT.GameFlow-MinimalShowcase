@@ -19,9 +19,6 @@ MonoBehaviour:
       rid: 781959606881222656
   - Enabled: 1
     Task:
-      rid: 781960131096608768
-  - Enabled: 1
-    Task:
       rid: 781960131096608769
   references:
     version: 2
@@ -29,13 +26,7 @@ MonoBehaviour:
     - rid: 781959606881222656
       type: {class: AddRefsFromDirectory, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
       data:
-        DirectoryOptional: {fileID: 102900000, guid: 7cd2ba95b5cd655479732451665238d4, type: 3}
-        TypeNamesOptional: Scene
-        GoToSubdirectories: 0
-    - rid: 781960131096608768
-      type: {class: AddRefsFromDirectory, ns: Flexy.AssetRefs.Editor.PipelineTasks, asm: Flexy.AssetRefs.Editor}
-      data:
-        DirectoryOptional: {fileID: 102900000, guid: 7ab8dd9ffd618474fb119a9b1b73a91a, type: 3}
+        DirectoryOptional: {fileID: 102900000, guid: 2eab5a5de1777c641997054f42cb5bf5, type: 3}
         TypeNamesOptional: Scene
         GoToSubdirectories: 1
     - rid: 781960131096608769
