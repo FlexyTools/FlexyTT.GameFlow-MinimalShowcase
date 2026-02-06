@@ -1,4 +1,4 @@
-using FlexyTT.GameFlow_MinimalShowcase.Metagame;
+using FlexyTT.GameFlow_MinimalShowcase.Menu;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Common.Kit
 {
