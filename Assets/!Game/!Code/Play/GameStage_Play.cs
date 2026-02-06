@@ -1,5 +1,5 @@
 ﻿using Flexy.Core.Extensions;
-using FlexyTT.GameFlow_MinimalShowcase.Play.Mode;
+using FlexyTT.GameFlow_MinimalShowcase.Play.Modes;
 using UnityEngine.SceneManagement;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Play

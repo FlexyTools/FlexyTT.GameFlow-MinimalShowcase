@@ -1,4 +1,4 @@
-namespace FlexyTT.GameFlow_MinimalShowcase.Play.Mode
+namespace FlexyTT.GameFlow_MinimalShowcase.Play.Modes
 {
 	public class EscapePoint : MonoBehEx
 	{

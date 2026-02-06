@@ -1,7 +1,7 @@
 // ReSharper disable AccessToStaticMemberViaDerivedType
 
 using FlexyTT.GameFlow_MinimalShowcase.Menu;
-using FlexyTT.GameFlow_MinimalShowcase.Play.Mode;
+using FlexyTT.GameFlow_MinimalShowcase.Play.Modes;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Play;
 

@@ -1,5 +1,5 @@
-using FlexyTT.GameFlow_MinimalShowcase.Play.Mode;
-using FlexyTT.GameFlow_MinimalShowcase.Play.Play;
+using FlexyTT.GameFlow_MinimalShowcase.Play.Mobs;
+using FlexyTT.GameFlow_MinimalShowcase.Play.Modes;
 using Button = FlexyTT.GameFlow_MinimalShowcase.Play.Controls.Button;
 
 namespace FlexyTT.GameFlow_MinimalShowcase.Play

@@ -1,4 +1,4 @@
-namespace FlexyTT.GameFlow_MinimalShowcase.Play.Play
+namespace FlexyTT.GameFlow_MinimalShowcase.Play.Mobs
 {
 	[RequireComponent(typeof(CharacterController))]
 	public class Mob_Player : Mob

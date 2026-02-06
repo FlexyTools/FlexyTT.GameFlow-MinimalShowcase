@@ -1,8 +1,8 @@
 using Flexy.Core.Extensions;
-using FlexyTT.GameFlow_MinimalShowcase.Play.Play;
+using FlexyTT.GameFlow_MinimalShowcase.Play.Mobs;
 using UnityEngine.SceneManagement;
 
-namespace FlexyTT.GameFlow_MinimalShowcase.Play.Mode
+namespace FlexyTT.GameFlow_MinimalShowcase.Play.Modes
 {
 	public class GameMode_Escape : MonoBehEx
 	{
