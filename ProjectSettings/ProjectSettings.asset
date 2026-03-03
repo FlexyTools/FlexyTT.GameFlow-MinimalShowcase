@@ -142,7 +142,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.145.81
+  bundleVersion: 0.203.77
   preloadedAssets:
   - {fileID: 0}
   - {fileID: -944628639613478452, guid: 28400d27034dfd146b7bc6d75ea4f182, type: 3}
@@ -172,12 +172,12 @@ PlayerSettings:
     Standalone: fun.flexytt.gameflow_minimalshowcase
     iPhone: fun.flexytt.gameflow_minimalshowcase
   buildNumber:
-    Standalone: 10180
+    Standalone: 20377
     VisionOS: 2502200
-    iPhone: 10180
-    tvOS: 10180
+    iPhone: 20377
+    tvOS: 20377
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 10180
+  AndroidBundleVersionCode: 20377
   AndroidMinSdkVersion: 29
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0
